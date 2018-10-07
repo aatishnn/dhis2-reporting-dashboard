@@ -24,3 +24,38 @@ yarn-error.log*
 TODO.md
 .env.local
 .env.production
+
+
+# for documentation
+
+# Jekyll
+_site/
+.jekyll-cache
+.jekyll-metadata
+.sass-cache
+
+# Ruby
+.bundle/
+.byebug_history
+.ruby-gemset
+.ruby-version
+*.gem
+Gemfile.lock
+
+# Files
+.analysis
+.DS_Store
+*.swp
+*~
+
+# Folders
+docs/vendor
+docs/.bundle/
+docs/.ruby-gemset
+docs/.ruby-version
+docs/*.gem
+docs/Gemfile.lock
+docs/_site/
+docs/.jekyll-cache
+docs/.jekyll-metadata
+docs/.sass-cache
