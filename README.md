@@ -1,4 +1,4 @@
-[https://aatishnn.github.io/dhis2-reporting-dashboard/](https://aatishnn.github.io/dhis2-reporting-dashboard/)
+Docs: [https://aatishnn.github.io/dhis2-reporting-dashboard/](https://aatishnn.github.io/dhis2-reporting-dashboard/)
 
 ![Screenshot of App](docs/images/app-preview.png)
 
