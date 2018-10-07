@@ -41,7 +41,7 @@ Now, copy `.env` to `.env.local` and set IDs in the file as:
 
 
 ### Dependencies
-Aside from the regular `yarn install`, this app requires a running DHIS2 instance, however it needn't be installed as a DHIS2 App during development. Once dependencies are installed, you can do just:
+Aside from the regular `yarn install`, this app requires a running DHIS2 instance, however it needn't be installed as a DHIS2 App during development. Once dependencies are installed, you can do:
 
     yarn start
 
