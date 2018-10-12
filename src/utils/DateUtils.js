@@ -30,8 +30,8 @@ const defineds = {
     startOfYear: startOfYear(new Date()),
     endOfYear: endOfYear(new Date()),
 
-    startOfLastMonth: startOfMonth(addMonths(new Date(), -1)),
-    endOfLastMonth: endOfMonth(addMonths(new Date(), -1)),
+    startOfLastThreeMonths: startOfMonth(addMonths(new Date(), -3)),
+    endOfLastThreeMonths: endOfMonth(addMonths(new Date(), -1)),
 
     startOfLastSixMonths: startOfMonth(addMonths(new Date(), -6)),
     endOfLastSixMonths: endOfMonth(addMonths(new Date(), -1)),
@@ -47,17 +47,10 @@ const defineds = {
 
 export const defaultStaticRanges = [
     {
-        label: 'This Month',
+        label: 'Last 3 Months',
         range: () => ({
-            startDate: defineds.startOfMonth,
-            endDate: defineds.endOfMonth,
-        }),
-    },
-    {
-        label: 'Last Month',
-        range: () => ({
-            startDate: defineds.startOfLastMonth,
-            endDate: defineds.endOfLastMonth,
+            startDate: defineds.startOfLastThreeMonths,
+            endDate: defineds.endOfLastThreeMonths,
         }),
     },
     {

@@ -38,7 +38,6 @@ class SummaryChart extends Component {
 
             yAxis: {
                 allowDecimals: false,
-                min: 0,
                 title: {
                     text: 'Submissions ' + percentageSymbol + " " + nonAggregatedLabel
                 }
@@ -52,6 +51,12 @@ class SummaryChart extends Component {
             redraw: false,
             series: summarized.series
         }
+
+        if (this.props.calculatePercentage) {
+            // get around Highcharts issue where chart has 125 in yAxis even if max of data is 100
+            options["yAxis"]["max"] = 100;
+        }
+        
         return (
             <HighchartsReact
                 highcharts={Highcharts}
