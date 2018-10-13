@@ -46,13 +46,13 @@ export default function generateSummary(
             data: [],
             stack: 'timeliness'
         },  {
-            name: 'Self Submitted',
+            name: 'Electronically submitted by facility',
             columnIndex: 6,
             data: [],
             color: HARIYO,
             stack: 'submission'
         }, {
-            name: 'Submitted by Parent',
+            name: 'Data entered by parent facility',
             columnIndex: 7,
             visible: true,
             color: ORANGE,
