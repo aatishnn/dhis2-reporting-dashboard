@@ -1,7 +1,7 @@
 {
     "version": "0.1",
-    "name": "eReporting Dashboard",
-    "description": "eReporting Dashboard is a GIZ App",
+    "name": "Reporting Status Dashboard",
+    "description": "Reporting Status Dashboard is a GIZ App",
     "launch_path": "index.html",
     "appType": "APP",
     "icons": {
