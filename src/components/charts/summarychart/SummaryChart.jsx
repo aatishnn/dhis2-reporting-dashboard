@@ -46,21 +46,27 @@ class SummaryChart extends Component {
             plotOptions: {
                 column: {
                     stacking: 'normal'
+                },
+                series: {
+                    animation: false
                 }
             },
             redraw: false,
             series: summarized.series
         }
 
-        if (this.props.calculatePercentage) {
+        if (this.props.calculatePercentage === true) {
+            console.log("setting percentage")
             // get around Highcharts issue where chart has 125 in yAxis even if max of data is 100
             options["yAxis"]["max"] = 100;
         }
         
         return (
+            // use random key to force update highcharts
             <HighchartsReact
                 highcharts={Highcharts}
-                options={options} />
+                options={options} 
+                key={Math.random()}/> 
         )
     }
 }
