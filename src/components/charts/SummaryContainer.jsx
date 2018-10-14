@@ -24,7 +24,6 @@ class SummaryDonut extends PureComponent {
         let newState = {
             [optionName]: value
         }
-        console.log(optionName, value)
         if (optionName === 'aggregate' && value === false) {
             // doesn't make sense to group by OU on non-aggregated data
             newState['groupBy'] = COLUMNS.MONTH
@@ -34,7 +33,7 @@ class SummaryDonut extends PureComponent {
             // doesn't make sense to show bar chart when not aggregated
             newState['aggregate'] = true
         }
-        if (optionName === 'groupBy' && value === COLUMNS.OU && this.state.aggregate === false) {
+        if (optionName === 'groupBy' && value === COLUMNS.OU && this.props.context.aggregate === false) {
             // doesn't make sense to group by OU on non-aggregated data
             newState['aggregate'] = true;
         }
@@ -43,7 +42,7 @@ class SummaryDonut extends PureComponent {
             // doesn't make sense to show line chart grouped by OU
             newState['groupBy'] = COLUMNS.MONTH
         }
-        if (optionName === 'groupBy' && value === COLUMNS.OU && this.state.chartType === CHARTS.LINE) {
+        if (optionName === 'groupBy' && value === COLUMNS.OU && this.props.context.chartType === CHARTS.LINE) {
             // doesn't make sense to show line chart grouped by OU
             newState['chartType'] = CHARTS.COLUMN;
         }
