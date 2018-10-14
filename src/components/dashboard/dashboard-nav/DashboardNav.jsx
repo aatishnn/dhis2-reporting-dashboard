@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
-import { defaultStaticRanges, nepaliToEnglish } from '../../../utils/DateUtils';
 import classnames from 'classnames';
+
+import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
+import { defaultStaticRanges } from '../../../utils/DateUtils';
 import { withDashboard } from '../../../App';
+import {OWNWERSHIP} from '../../../constants/Constants';
 import NepaliDatePicker from '../../nepalidatepicker/NepaliDatePicker';
 
 
@@ -47,8 +49,18 @@ class DashboardNav extends Component {
   render() {
     return (
       <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <label>Ownership:
+          <select class="custom-select" 
+            value={this.props.context.ownership}
+            onChange={event=> this.props.context.setOwnership(event.target.value)}
+            >
+            <option value={OWNWERSHIP.PUBLIC}>Public</option>
+            <option value={OWNWERSHIP.PRIVATE}>Non-Public</option>
+            <option value={OWNWERSHIP.ALL}>Any</option>
+          </select>
+        </label>
         <h1 className="h4">{this.props.context.startDate} - {this.props.context.endDate}</h1>
-        
+
         <div className="btn-toolbar mb-2 mb-md-0">
           <div className="btn-group mr-2">
             {defaultStaticRanges.map((r, index) => 

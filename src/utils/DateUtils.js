@@ -82,7 +82,6 @@ export const humanizedNepali = function (yyyymm) {
 
 export const nepaliToEnglish = function (nepaliDate) {
     // nepaliDate = dd/mm/yyyy
-    console.log(nepaliDate)
     var date = nepaliDate.split('/');
     var year = parseInt(date[2], 10);
     var month = parseInt(date[1], 10);

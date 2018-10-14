@@ -125,14 +125,6 @@ class SummaryDonut extends PureComponent {
                                     <option>Date Entered by Parent Facility</option>
                                 </select>
                             </label>   
-
-                            <label>Ownership:
-                                <select class="custom-select">
-                                    <option>Public</option>
-                                    <option>Non-Public</option>
-                                    <option>Any</option>
-                                </select>
-                            </label>
                         </div>
                         <hr/>
                         <SummaryChart

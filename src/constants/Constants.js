@@ -30,10 +30,15 @@ export const CHARTS = {LINE, COLUMN}
 // this is sufficiently stable
 const OWNERSHIP_PUBLIC = 49380
 const OWNERSHIP_PRIVATE = 49381
+// OWNERSHIP_ALL is a pseudo ID, not an actual ID in DHIS2. It is
+// used to switch between SQLVIEWS depending on whether non-filtering
+// version of SQLVIEW is required
+const OWNERSHIP_ALL = "sql_view_all" 
 
 export const OWNWERSHIP = {
     PRIVATE: OWNERSHIP_PRIVATE, 
-    PUBLIC: OWNERSHIP_PUBLIC
+    PUBLIC: OWNERSHIP_PUBLIC,
+    ALL: OWNERSHIP_ALL
 };
 
 // SQL VIEWS

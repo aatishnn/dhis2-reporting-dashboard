@@ -1,7 +1,7 @@
 import { init } from 'd2/lib/d2';
 import _ from 'lodash';
 import { nepaliToEnglish } from '../utils/DateUtils';
-import { SQLVIEW } from '../constants/Constants';
+import { SQLVIEW, OWNWERSHIP } from '../constants/Constants';
 
 class DataService {
     constructor() {
@@ -17,21 +17,39 @@ class DataService {
     }
 
     getDataNepali(startDate, endDate, ouUid, sqlViewId) {
-        return this.getData(
-            nepaliToEnglish(startDate), nepaliToEnglish(endDate), ouUid, sqlViewId
-        )
+        return this.getData(sqlViewId, {
+            startDate: nepaliToEnglish(startDate),
+            endDate: nepaliToEnglish(endDate),
+            ouUid
+        })
     }
 
-    getData(startDate, endDate, ouUid, sqlViewId) {
-        let cacheKey = `${startDate}-${endDate}-${ouUid}`;
+    getDataNepaliFilterableOwnership(startDate, endDate, ouUid, ownership, sqlViewId) {
+        return this.getData(sqlViewId, {
+            startDate: nepaliToEnglish(startDate),
+            endDate: nepaliToEnglish(endDate),
+            ouUid,
+            orgUnitGroupId: ownership
+        })
+    }
+
+    getData(sqlViewId, params) {
+        let cacheKey = [sqlViewId, _.values(params)].join('-');
         if (this.cacheKeys[sqlViewId] && this.cacheKeys[sqlViewId] === cacheKey) {
             return new Promise((resolve, reject) => {
                 resolve(this.cacheValues[sqlViewId]);
             });
         }
+        let apiParams = {
+            'var': _.map(_.keys(params), (key) => {
+                let value = params[key];
+                return `${key}:${value}`;
+            })
+        };
+
 
         return this.d2.Api.getApi().get(`sqlViews/${sqlViewId}/data`,
-            { 'var': [`startDate:${startDate}`, `endDate:${endDate}`, `ouUid:${ouUid}`] })
+            apiParams)
             .then(data => {
                 this.cacheKeys[sqlViewId] = cacheKey;
                 this.cacheValues[sqlViewId] = data;
@@ -40,9 +58,15 @@ class DataService {
 
     }
 
-    getPrimaryData(startDate, endDate, ouUid) {
-        console.log(SQLVIEW)
-        return this.getDataNepali(startDate, endDate, ouUid, SQLVIEW.AGGREGATED_ANY_OWNERSHIP);
+    getPrimaryData(startDate, endDate, ouUid, ownership) {
+        if (ownership === OWNWERSHIP.ALL) {
+            return this.getDataNepali(startDate, endDate, ouUid, SQLVIEW.AGGREGATED_ANY_OWNERSHIP);
+        }
+        else {
+            return this.getDataNepaliFilterableOwnership(
+                startDate, endDate, ouUid, ownership, 
+                SQLVIEW.AGGREGATED_FILTERABLE_OWNERSHIP);
+        }
     }
 
     getSecondaryData(startDate, endDate, ouUid) {

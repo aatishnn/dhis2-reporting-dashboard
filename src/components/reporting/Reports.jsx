@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, CardBody, Table, Button } from 'reactstrap';
+import { Card, CardBody, Table } from 'reactstrap';
 import { CSVLink } from 'react-csv/lib';
 import { SECONDARY_COLUMNS } from '../../constants/Constants';
 
@@ -19,12 +19,12 @@ class Reports extends Component {
 
     timelyReportingFacilities = (rows) => {
         return this.reportingFacilities(rows).filter((value)=> {
-            return value[SECONDARY_COLUMNS.TIMELINESS] == SECONDARY_COLUMNS.VALUE_TIMELY;
+            return value[SECONDARY_COLUMNS.TIMELINESS] === SECONDARY_COLUMNS.VALUE_TIMELY;
         })
     }
     lateReportingFacilities = (rows) => {
         return this.reportingFacilities(rows).filter((value) => {
-            return value[SECONDARY_COLUMNS.TIMELINESS] == SECONDARY_COLUMNS.VALUE_LATE;
+            return value[SECONDARY_COLUMNS.TIMELINESS] === SECONDARY_COLUMNS.VALUE_LATE;
         })
     }
 

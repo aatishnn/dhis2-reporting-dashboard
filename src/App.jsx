@@ -6,7 +6,7 @@ import { Container } from 'reactstrap';
 import Nav from './components/nav/Nav';
 import SideNav from './components/sidenav/SideNav';
 import Dashboard from './components/dashboard/Dashboard';
-import { COLUMNS, CHARTS } from './constants/Constants';
+import { COLUMNS, CHARTS, OWNWERSHIP } from './constants/Constants';
 
 
 const DashboardContext = React.createContext({})
@@ -32,6 +32,7 @@ class App extends Component {
         groupBy: COLUMNS.MONTH,
         chartType: CHARTS.COLUMN,
         aggregate: true,
+        ownership: OWNWERSHIP.ALL,
 
         // setter functions
         setContext: (state) => this.setState(state),
@@ -43,7 +44,8 @@ class App extends Component {
         setGroupBy: (value) => this.setContextOf('groupBy', value),
         setChartType: (value) => this.setContextOf('chartType', value),
         setAggregate: (value) => this.setContextOf('aggregate', value),
-        setOuUid: (ouUid) => {this.setState({ouUid})}
+        setOuUid: (ouUid) => {this.setState({ouUid})},
+        setOwnership: (ownership) => { this.setState({ ownership }) }
     }
 
     render() {
