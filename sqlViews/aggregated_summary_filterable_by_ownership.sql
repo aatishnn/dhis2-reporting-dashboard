@@ -18,6 +18,12 @@
 		WHEN usermembership.organisationunitid = ou.organisationunitid THEN 1
 	END) AS Self_submitted,
 
+	COUNT
+	(CASE 
+			WHEN
+	(cdr.periodid IS NOT NULL AND usermembership.organisationunitid IS NULL) OR usermembership.organisationunitid <> ou.organisationunitid THEN 1
+	END) AS Submitted_by_parent,
+
 	-- orgunitgroupid for "PUBLIC" is 49380
 	-- orgunitgroupid for "NON-PUBLIC" is 49381
 	-- this has been intentionally hardcoded because of the performance loss when JOIN with orgunitgroup was done
