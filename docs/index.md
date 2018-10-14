@@ -27,7 +27,7 @@ Generates aggregated counts of various reporting status
 
 #### Raw data of submission status for each month for all facilities selected
 
-    - Filename: all_health_facilities_with_unreported
+    - Filename: all_health_facilities_with_unreported.sql
 
 Create these SQL Views in DHIS2 with the following parameters:
 
