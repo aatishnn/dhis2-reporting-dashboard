@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReportTable from '../ReportTable/ReportTable';
-import SummaryDonut from '../charts/SummaryDonut';
+import SummaryDonut from '../charts/SummaryContainer';
 import Loader from 'react-loader-spinner'
 
 

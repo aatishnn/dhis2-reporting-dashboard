@@ -56,7 +56,6 @@ class SummaryChart extends Component {
         }
 
         if (this.props.calculatePercentage === true) {
-            console.log("setting percentage")
             // get around Highcharts issue where chart has 125 in yAxis even if max of data is 100
             options["yAxis"]["max"] = 100;
         }

@@ -1,6 +1,7 @@
 import { init } from 'd2/lib/d2';
 import _ from 'lodash';
 import { nepaliToEnglish } from '../utils/DateUtils';
+import { SQLVIEW } from '../constants/Constants';
 
 class DataService {
     constructor() {
@@ -40,11 +41,12 @@ class DataService {
     }
 
     getPrimaryData(startDate, endDate, ouUid) {
-        return this.getDataNepali(startDate, endDate, ouUid, process.env.REACT_APP_DHIS2_PRIMARY_SQLVIEW_ID);
+        console.log(SQLVIEW)
+        return this.getDataNepali(startDate, endDate, ouUid, SQLVIEW.AGGREGATED_ANY_OWNERSHIP);
     }
 
     getSecondaryData(startDate, endDate, ouUid) {
-        return this.getDataNepali(startDate, endDate, ouUid, process.env.REACT_APP_DHIS2_SECONDARY_SQLVIEW_ID);
+        return this.getDataNepali(startDate, endDate, ouUid, SQLVIEW.ALL_HF_DATA);
     }
 
     saveFavorite(name, configuration) {

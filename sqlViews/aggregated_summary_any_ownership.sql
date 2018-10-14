@@ -50,9 +50,6 @@ LEFT JOIN usermembership ON usermembership.userinfoid = users.userid AND  userme
 -- orgunitgroupid for "PUBLIC" is 49380
 -- orgunitgroupid for "NON-PUBLIC" is 49381
 -- this has been intentionally hardcoded because of the performance loss when JOIN with orgunitgroup was done
-JOIN orgunitgroupmembers
-ON
-(orgunitgroupmembers.orgunitgroupid=49380 OR orgunitgroupmembers.orgunitgroupid=49381) AND orgunitgroupmembers.organisationunitid = ou.organisationunitid
 
 WHERE 
 	ou.path LIKE '%/${ouUid}%' 

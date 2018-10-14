@@ -62,6 +62,7 @@ class SummaryDonut extends PureComponent {
                     <CardBody>
                         <div class="d-flex justify-content-end mb-4">
                             <button class="btn btn-small mr-2" onClick={this.toggleFavoriteModal}>Save as</button>
+
                             <div class="btn-group btn-group-toggle mr-2" data-toggle="buttons">
                                 <label class={classnames("btn btn-sm btn-outline-info", { active: this.isChecked('aggregate', true) })}>
                                     <input type="radio" name="aggregateOptions" autocomplete="off"
@@ -112,6 +113,28 @@ class SummaryDonut extends PureComponent {
                                 </label>
                             </div>
                         </div>
+
+                        <div class="d-flex justify-content-end mb-4">
+                            <label>Data to plot:
+                                <select class="custom-select">
+                                    <option>Timely</option>
+                                    <option>Late</option>
+                                    <option>Timely + Late</option>
+                                    <option>Unreported</option>
+                                    <option>Electronically Submitted by Facility</option>
+                                    <option>Date Entered by Parent Facility</option>
+                                </select>
+                            </label>   
+
+                            <label>Ownership:
+                                <select class="custom-select">
+                                    <option>Public</option>
+                                    <option>Non-Public</option>
+                                    <option>Any</option>
+                                </select>
+                            </label>
+                        </div>
+                        <hr/>
                         <SummaryChart
                             rows={this.props.rows}
                             groupBy={this.props.context.groupBy}
