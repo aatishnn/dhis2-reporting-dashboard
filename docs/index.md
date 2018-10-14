@@ -12,19 +12,24 @@ Having conducted multiple capacity development trainings to more than 300 health
 
 ## Technical Docs
 ### Data Source
-Standard DHIS2 APIs are not sufficient/optimal to consume data required by this app. So, the app depends on two SQLViews that should be uploaded to DHIS2 and its IDs should be set in `.env.local` or `.env.production` file depending on the deployment. These two SQLViews are:
+Standard DHIS2 APIs are not sufficient/optimal to consume data required by this app. So, the app depends on three SQLViews that should be uploaded to DHIS2 and its IDs should be set in `.env.local` or `.env.production` file depending on the desired deployment. These three SQLViews are:
 
-#### Primary View 
+#### Aggregated View 
 Generates aggregated counts of various reporting status
 
-    - Filename: sqlViews/aggregated_main_with_unreported.sql
+    - Filename: sqlViews/aggregated_summary_any_ownership.sql  
 
-#### Secondary 
-Generates individual health facilities with various reporting status
+#### Aggregated View - Filterable by Ownership
+Generates aggregated counts of various reporting status
 
-    - Filename: sqlViews/main_with_unreported.sql
+    - Filename: sqlViews/aggregated_summary_filterable_by_ownership.sql  
 
-Create both of these SQL Views in DHIS2 with the following parameters:
+
+#### Raw data of submission status for each month for all facilities selected
+
+    - Filename: all_health_facilities_with_unreported
+
+Create these SQL Views in DHIS2 with the following parameters:
 
 ![DHIS2 SQL View Configuration](images/dhis2-sqlview.png)
 
@@ -36,8 +41,9 @@ Replace `http://localhost:8080/hmis/` with the Base URL of your DHIS2 installati
 
 Now, copy `.env` to `.env.local` and set IDs in the file as:
 
-    REACT_APP_DHIS2_PRIMARY_SQLVIEW_ID="xxxxxxxxxxx"
-    REACT_APP_DHIS2_SECONDARY_SQLVIEW_ID="xxxxxxxxxxx"
+    REACT_APP_SQL_VIEW_AGGREGATED_ANY_OWNERSHIP="yyyy"
+    REACT_APP_SQL_VIEW_AGGREGATED_FILTERABLE_OWNERSHIP="yyyy"
+    REACT_APP_SQL_VIEW_ALL_HF_DATA="yyyy"
 
 
 ### Dependencies
