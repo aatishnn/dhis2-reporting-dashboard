@@ -7,6 +7,7 @@ export default function generateSummary(
     tableData, 
     group_by_column = COLUMNS.MONTH,                    // group_by_column: column index to group by
     calculatePercentage = true,                         // calculatePercentage: whether to calculate percentage based on total_column
+    disaggregateLate=true,
     skip_columns = [COLUMNS.MONTH, COLUMNS.OU],         // skip_columns: columns to skip when aggregating. 
     total_column = COLUMNS.EXPECTED,                    // total_column: column to use for calculating percentage
 ) {
@@ -20,6 +21,48 @@ export default function generateSummary(
     
     let data = _.cloneDeep(tableData);
     let categories = [];
+    let lateDisaggregatedSeries = [
+
+        {
+            name: 'Late by more than 60 days',
+            columnIndex: 11,
+            visible: true,
+            data: [],
+            stack: 'timeliness'
+        }, 
+
+        {
+            name: 'Late by 60 days',
+            columnIndex: 10,
+            visible: true,
+            data: [],
+            stack: 'timeliness'
+        },
+
+        {
+            name: 'Late by 30 days',
+            columnIndex: 9,
+            visible: true,
+            data: [],
+            stack: 'timeliness'
+        },
+
+        {
+            name: 'Late by 15 days',
+            columnIndex: 8,
+            visible: true,
+            data: [],
+            stack: 'timeliness'
+        },
+    ]
+    let lateSeries = disaggregateLate ? lateDisaggregatedSeries : [{
+        name: 'Late',
+        columnIndex: 3,
+        visible: true,
+        color: VIOLET,
+        data: [],
+        stack: 'timeliness'
+    }]
     let series = [
 
         {
@@ -30,14 +73,7 @@ export default function generateSummary(
             data: [],
             stack: 'timeliness'
         }, 
-        {
-            name: 'Late',
-            columnIndex: 3,
-            visible: true,
-            color: VIOLET,
-            data: [],
-            stack: 'timeliness'
-        }, 
+        ...lateSeries,
         {
             name: 'Timely',
             columnIndex: 2,

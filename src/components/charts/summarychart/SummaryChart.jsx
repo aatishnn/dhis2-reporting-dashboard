@@ -16,7 +16,7 @@ class SummaryChart extends Component {
         let nonAggregatedLabel = !this.props.aggregate ? '(Timely + Late)' : '';
         let summarized;
         if (this.props.aggregate) {
-            summarized = generateSummary(this.props.rows, this.props.groupBy, this.props.calculatePercentage);
+            summarized = generateSummary(this.props.rows, this.props.groupBy, this.props.calculatePercentage, this.props.disaggregateLate);
         } else {
             summarized = generateNonAggregatedSummary(this.props.rows, this.props.groupBy, this.props.calculatePercentage);
         }

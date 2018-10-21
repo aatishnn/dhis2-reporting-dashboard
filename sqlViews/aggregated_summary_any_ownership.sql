@@ -20,7 +20,19 @@
 
 	COUNT(CASE 
 		WHEN (cdr.periodid IS NOT NULL AND usermembership.organisationunitid IS NULL) OR usermembership.organisationunitid <> ou.organisationunitid THEN 1
-	END) AS Submitted_by_parent
+	END) AS Submitted_by_parent,
+	COUNT(CASE 
+		WHEN cdr.periodid is NOT NULL AND DATE(cdr.date) > (DATE(pe.enddate) + INTERVAL '15 DAY') AND DATE(cdr.date) <= (DATE(pe.enddate) + INTERVAL '15 DAY' + INTERVAL '15 DAY') THEN 1
+	END) AS Late_by_15,
+	COUNT(CASE 
+		WHEN cdr.periodid is NOT NULL AND DATE(cdr.date) > (DATE(pe.enddate) + INTERVAL '15 DAY' + INTERVAL '15 DAY') AND DATE(cdr.date) <= (DATE(pe.enddate) + INTERVAL '15 DAY' + INTERVAL '30 DAY') THEN 1
+	END) AS Late_by_30,
+	COUNT(CASE 
+		WHEN cdr.periodid is NOT NULL AND DATE(cdr.date) > (DATE(pe.enddate) + INTERVAL '15 DAY' + INTERVAL '30 DAY') AND DATE(cdr.date) <= (DATE(pe.enddate) + INTERVAL '15 DAY' + INTERVAL '60 DAY') THEN 1
+	END) AS Late_by_60,
+	COUNT(CASE 
+		WHEN cdr.periodid is NOT NULL AND DATE(cdr.date) > (DATE(pe.enddate) + INTERVAL '15 DAY' + INTERVAL '60 DAY') THEN 1
+	END) AS Late_more_than_60
 
 FROM organisationunit ou
 	JOIN orgunitlevel ON orgunitlevel.name= 'Health Facility' AND ou.hierarchylevel = orgunitlevel.level

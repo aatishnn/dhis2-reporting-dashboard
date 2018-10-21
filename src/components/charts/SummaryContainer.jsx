@@ -46,6 +46,7 @@ class SummaryDonut extends PureComponent {
             // doesn't make sense to show line chart grouped by OU
             newState['chartType'] = CHARTS.COLUMN;
         }
+        console.log(optionName, value)
         this.props.context.setContext(newState);
     }
 
@@ -64,12 +65,12 @@ class SummaryDonut extends PureComponent {
 
                             <div class="btn-group btn-group-toggle mr-2" data-toggle="buttons">
                                 <label class={classnames("btn btn-sm btn-outline-info", { active: this.isChecked('aggregate', true) })}>
-                                    <input type="radio" name="aggregateOptions" autocomplete="off"
+                                    <input type="radio" name="aggregateOptions"
                                         onChange={(event) => this.handleOptionChange('aggregate', true)}
                                         checked={this.isChecked('aggregate', true)} /> Aggregate
                                 </label>
                                 <label class={classnames("btn btn-sm btn-outline-info", { active: this.isChecked('aggregate', false) })}>
-                                    <input type="radio" name="aggregateOptions" autocomplete="off"
+                                    <input type="radio" name="aggregateOptions"
                                         onChange={(event) => this.handleOptionChange('aggregate', false)}
                                         checked={this.isChecked('aggregate', false)} /> Don't Aggregate
                                 </label>
@@ -77,36 +78,36 @@ class SummaryDonut extends PureComponent {
 
                             <div class="btn-group btn-group-toggle mr-2" data-toggle="buttons">
                                 <label class={classnames("btn btn-sm btn-outline-info", { active: this.isChecked('groupBy', COLUMNS.MONTH) })}>
-                                    <input type="radio" name="groupingOptions" autocomplete="off"
+                                    <input type="radio" name="groupingOptions"
                                         onChange={(event) => this.handleOptionChange('groupBy', COLUMNS.MONTH)}
                                         checked={this.isChecked('groupBy', COLUMNS.MONTH)} /> Group by Date
                                 </label>
                                 <label class={classnames("btn btn-sm btn-outline-info", { active: this.isChecked('groupBy', COLUMNS.OU) })}>
-                                    <input type="radio" name="groupingOptions" autocomplete="off"
+                                    <input type="radio" name="groupingOptions"
                                         onChange={(event) => this.handleOptionChange('groupBy', COLUMNS.OU)}
                                         checked={this.isChecked('groupBy', COLUMNS.OU)} /> Group by OU
                                 </label>
                             </div>
                             <div class="btn-group btn-group-toggle mr-2" data-toggle="buttons">
                                 <label class={classnames("btn btn-sm btn-outline-info", { active: this.isChecked('chartType', CHARTS.LINE) })}>
-                                    <input type="radio" name="chartTypeOptions" autocomplete="off"
+                                    <input type="radio" name="chartTypeOptions"
                                         onChange={(event) => this.handleOptionChange('chartType', CHARTS.LINE)}
                                         checked={this.isChecked('chartType', CHARTS.LINE)} /> Line Chart
                                 </label>
                                 <label class={classnames("btn btn-sm btn-outline-info", { active: this.isChecked('chartType', CHARTS.COLUMN) })}>
-                                    <input type="radio" name="chartTypeOptions" autocomplete="off"
+                                    <input type="radio" name="chartTypeOptions"
                                         onChange={(event) => this.handleOptionChange('chartType', CHARTS.COLUMN)}
                                         checked={this.isChecked('chartType', CHARTS.COLUMN)} /> Bar Chart
                                 </label>
                             </div>
                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                 <label class={classnames("btn btn-sm btn-outline-info", { active: this.isChecked('calculatePercentage', true) })}>
-                                    <input type="radio" name="percentageOptions" autocomplete="off"
+                                    <input type="radio" name="percentageOptions"
                                         onChange={(event) => this.handleOptionChange('calculatePercentage', true)}
                                         checked={this.isChecked('calculatePercentage', true)} /> Percentage
                                 </label>
                                 <label class={classnames("btn btn-sm btn-outline-info", { active: this.isChecked('calculatePercentage', false) })}>
-                                    <input type="radio" name="percentageOptions" autocomplete="off"
+                                    <input type="radio" name="percentageOptions"
                                         onChange={(event) => this.handleOptionChange('calculatePercentage', false)}
                                         checked={this.isChecked('calculatePercentage', false)} /> Values
                                 </label>
@@ -114,16 +115,29 @@ class SummaryDonut extends PureComponent {
                         </div>
 
                         <div class="d-flex justify-content-end mb-4">
-                            <label>Data to plot:
-                                <select class="custom-select">
-                                    <option>Timely</option>
-                                    <option>Late</option>
-                                    <option>Timely + Late</option>
-                                    <option>Unreported</option>
-                                    <option>Electronically Submitted by Facility</option>
-                                    <option>Date Entered by Parent Facility</option>
-                                </select>
-                            </label>   
+                            <div class="form-inline">
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label" htmlFor="disaggregateCb">Disaggregate Late: </label>
+
+                                    {/* Disable disaggregated late checkbox when graph is not in aggregation mode */}
+                                    <input class="form-check-input" type="checkbox" id="disaggregateCb"
+                                        onChange={(event) => this.handleOptionChange('disaggregateLate', event.target.checked)}
+                                        checked={this.isChecked('disaggregateLate', true)}
+                                        disabled={this.isChecked('aggregate', false)}
+                                    />
+
+                                </div>
+                                <label>Data to plot:
+                                    <select class="custom-select">
+                                        <option>Timely</option>
+                                        <option>Late</option>
+                                        <option>Timely + Late</option>
+                                        <option>Unreported</option>
+                                        <option>Electronically Submitted by Facility</option>
+                                        <option>Date Entered by Parent Facility</option>
+                                    </select>
+                                </label>   
+                            </div>
                         </div>
                         <hr/>
                         <SummaryChart
@@ -131,7 +145,8 @@ class SummaryDonut extends PureComponent {
                             groupBy={this.props.context.groupBy}
                             calculatePercentage={this.props.context.calculatePercentage}
                             chartType={this.props.context.chartType}
-                            aggregate={this.props.context.aggregate} />
+                            aggregate={this.props.context.aggregate}
+                            disaggregateLate={this.props.context.disaggregateLate} />
                         <SaveFavorite isOpen={this.state.isFavoriteModalOpen} toggle={this.toggleFavoriteModal} />
                     </CardBody>
                 </Card>

@@ -31,7 +31,8 @@ class App extends Component {
         calculatePercentage: true,
         groupBy: COLUMNS.MONTH,
         chartType: CHARTS.COLUMN,
-        aggregate: true,
+        aggregate: true,            // aggregate non-grouping column
+        disaggregateLate: false,     // whether to further disaggregate Late data 
         ownership: OWNWERSHIP.ALL,
 
         // setter functions
@@ -45,6 +46,7 @@ class App extends Component {
         setChartType: (value) => this.setContextOf('chartType', value),
         setAggregate: (value) => this.setContextOf('aggregate', value),
         setOuUid: (ouUid) => {this.setState({ouUid})},
+        setDisaggregateLate: (value) => this.setContextOf('disaggregateLate', value),
         setOwnership: (ownership) => { this.setState({ ownership }) }
     }
 
