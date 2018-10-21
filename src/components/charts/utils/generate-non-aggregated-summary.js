@@ -7,7 +7,7 @@ export default function generateNonAggregatedSummary(
     tableData,
     group_by_column = COLUMNS.MONTH,                    // group_by_column: column index to group by
     calculatePercentage = true,                         // calculatePercentage: whether to calculate percentage based on total_column
-    dataColumns=[COLUMNS.TIMELY, COLUMNS.LATE],
+    dataColumns=[COLUMNS.TIMELY, COLUMNS.LATE],         // columns to plot after addition when in not aggregating mode
     skip_columns = [COLUMNS.MONTH, COLUMNS.OU],         // skip_columns: columns to skip when aggregating. 
     total_column = COLUMNS.EXPECTED,                    // total_column: column to use for calculating percentage
 ) {
@@ -25,11 +25,15 @@ export default function generateNonAggregatedSummary(
             _.forEach(row, (value, index) => {
                 let total = row[total_column]
                 // calculate percentage if calculatePercentage is true
-                row[index] = (calculatePercentage && !skip_columns.includes(index) && value) ?
-                    Math.round(100 * value / total) : value;       
+                row[index] = (calculatePercentage && !skip_columns.includes(index) && index !== total_column &&  value) ?
+                    Math.round(100 * value / total) : value;   
                
 
             });
+            // finally if calculatePercentage is true, set total_column to 100
+            if (calculatePercentage) {
+                row[total_column] = 100;
+            }
             let dataValue = _.map(dataColumns, (col) => Number(row[col]) ).reduce((a, b) => a+b, 0);
 
             let ouSeries = series.find(x => x.name === row[COLUMNS.OU])
@@ -53,6 +57,7 @@ export default function generateNonAggregatedSummary(
         categories.push(key); // push grouping column's value to categories
 
     });
+    console.log(series, categories)
     return { series, categories };
 }
 

@@ -34,6 +34,7 @@ class App extends Component {
         aggregate: true,            // aggregate non-grouping column
         disaggregateLate: false,     // whether to further disaggregate Late data 
         ownership: OWNWERSHIP.ALL,
+        disaggregatedDataColumn: [COLUMNS.TIMELY, COLUMNS.LATE],    // columns to use as data when non-grouping column is disaggregated
 
         // setter functions
         setContext: (state) => this.setState(state),
@@ -47,7 +48,8 @@ class App extends Component {
         setAggregate: (value) => this.setContextOf('aggregate', value),
         setOuUid: (ouUid) => {this.setState({ouUid})},
         setDisaggregateLate: (value) => this.setContextOf('disaggregateLate', value),
-        setOwnership: (ownership) => { this.setState({ ownership }) }
+        setOwnership: (ownership) => { this.setState({ ownership }) },
+        setDisaggregatedDataColumn: (value) => this.setContextOf('disaggregatedDataColumn', value),
     }
 
     render() {

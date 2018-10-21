@@ -128,13 +128,17 @@ class SummaryDonut extends PureComponent {
 
                                 </div>
                                 <label>Data to plot:
-                                    <select class="custom-select">
-                                        <option>Timely</option>
-                                        <option>Late</option>
-                                        <option>Timely + Late</option>
-                                        <option>Unreported</option>
-                                        <option>Electronically Submitted by Facility</option>
-                                        <option>Date Entered by Parent Facility</option>
+                                    {/* Select's value doesn't support arrays. So, before updating the state, split and convert value to Number */}
+                                    <select class="custom-select" 
+                                        disabled={this.isChecked('aggregate', true)}
+                                        value={this.props.context.disaggregatedDataColumn}
+                                        onChange={(event) => this.handleOptionChange('disaggregatedDataColumn', event.target.value.split(',').map(Number))}>
+                                        <option value={[COLUMNS.TIMELY]}>Timely</option>
+                                        <option value={[COLUMNS.LATE]}>Late</option>
+                                        <option value={[COLUMNS.TIMELY, COLUMNS.LATE]}>Timely + Late</option>
+                                        <option value={[COLUMNS.UNREPORTED]}>Unreported</option>
+                                        <option value={[COLUMNS.SELF_SUBMITTED]}>Electronically Submitted by Facility</option>
+                                        <option value={[COLUMNS.SUBMITTED_BY_PARENT]}>Date Entered by Parent Facility</option>
                                     </select>
                                 </label>   
                             </div>
@@ -146,7 +150,8 @@ class SummaryDonut extends PureComponent {
                             calculatePercentage={this.props.context.calculatePercentage}
                             chartType={this.props.context.chartType}
                             aggregate={this.props.context.aggregate}
-                            disaggregateLate={this.props.context.disaggregateLate} />
+                            disaggregateLate={this.props.context.disaggregateLate} 
+                            disaggregatedDataColumn={this.props.context.disaggregatedDataColumn}/>
                         <SaveFavorite isOpen={this.state.isFavoriteModalOpen} toggle={this.toggleFavoriteModal} />
                     </CardBody>
                 </Card>

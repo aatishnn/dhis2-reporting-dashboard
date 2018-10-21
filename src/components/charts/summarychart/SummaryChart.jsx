@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import _ from 'lodash';
 import { COLUMNS } from '../../../constants/Constants';
 import generateSummary from '../utils/generate-summary';
 
@@ -13,12 +14,18 @@ HighChartsExporting(Highcharts);
 class SummaryChart extends Component {
     render() {
         let percentageSymbol = this.props.calculatePercentage ? '%' : '';
-        let nonAggregatedLabel = !this.props.aggregate ? '(Timely + Late)' : '';
+        let nonAggregatedLabel = !this.props.aggregate ? _(COLUMNS).keys(COLUMNS).reduce((final, value, key) => {
+            console.log(final, value, key, this.props.disaggregatedDataColumn)
+            if(this.props.disaggregatedDataColumn.includes(key)) return final + " " + value;
+            return final;
+        }, '') : '';
+
         let summarized;
         if (this.props.aggregate) {
             summarized = generateSummary(this.props.rows, this.props.groupBy, this.props.calculatePercentage, this.props.disaggregateLate);
         } else {
-            summarized = generateNonAggregatedSummary(this.props.rows, this.props.groupBy, this.props.calculatePercentage);
+            console.log(this.props.disaggregatedDataColumn)
+            summarized = generateNonAggregatedSummary(this.props.rows, this.props.groupBy, this.props.calculatePercentage, this.props.disaggregatedDataColumn);
         }
         let options = {
 

@@ -1,10 +1,14 @@
+// These are column indices of AGGREGATED SQLViews
 const MONTH = 0;
 const OU = 1;
-const EXPECTED = 5;
 const TIMELY = 2;
 const LATE = 3;
+const UNREPORTED = 4;
+const EXPECTED = 5;
+const SELF_SUBMITTED = 6;
+const SUBMITTED_BY_PARENT = 7;
 
-export const COLUMNS = {MONTH, OU, EXPECTED, TIMELY, LATE};
+export const COLUMNS = {MONTH, OU, TIMELY, LATE, UNREPORTED, EXPECTED, SELF_SUBMITTED, SUBMITTED_BY_PARENT};
 
 const SECONDARY_COLUMN_REPORTED_ON = 3;
 const SECONDARY_COLUMN_TIMELINESS = 4;
