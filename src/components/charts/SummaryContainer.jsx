@@ -139,6 +139,8 @@ class SummaryDonut extends PureComponent {
                                         <option value={[COLUMNS.UNREPORTED]}>Unreported</option>
                                         <option value={[COLUMNS.SELF_SUBMITTED]}>Electronically Submitted by Facility</option>
                                         <option value={[COLUMNS.SUBMITTED_BY_PARENT]}>Date Entered by Parent Facility</option>
+                                        <option value={[COLUMNS.TIMELY, COLUMNS.LATE_BY_15]}>Timely + Late (max:15 days)</option>
+                                        <option value={[COLUMNS.TIMELY, COLUMNS.LATE_BY_15, COLUMNS.LATE_BY_30]}>Timely + Late (max:30 days)</option>
                                     </select>
                                 </label>   
                             </div>
