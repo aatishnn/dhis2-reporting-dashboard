@@ -8,7 +8,7 @@
 	DATE(cdr.date) AS reported_on,
 	CASE 
 		WHEN cdr.periodid is NULL THEN NULL
-		WHEN DATE(cdr.date) BETWEEN DATE(pe.enddate) AND DATE(pe.enddate) + INTERVAL '15 DAY' THEN 'Timely' 
+		WHEN DATE(cdr.date) BETWEEN DATE(pe.enddate) AND DATE(pe.enddate) + INTERVAL '${timelyReferenceDays}' THEN 'Timely' 
 		ELSE 'Late' 
 	END AS Timeliness,
 

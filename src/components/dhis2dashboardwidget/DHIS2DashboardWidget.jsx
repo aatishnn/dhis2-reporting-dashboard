@@ -17,7 +17,7 @@ class DHIS2DashboardWidget extends Component {
     componentDidMount() {
         dataService.getWidgetFavorite(this.props.dashboardItemId)
             .then((chartConfig) => {
-                dataService.getPrimaryData(chartConfig.startDate, chartConfig.endDate, chartConfig.ouUid)
+                dataService.getPrimaryData(chartConfig.startDate, chartConfig.endDate, chartConfig.ouUid, chartConfig.timelyReferenceDays)
                     .then((data)=> {
                         this.setState({
                             loading: false,

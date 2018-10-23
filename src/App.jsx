@@ -35,6 +35,7 @@ class App extends Component {
         disaggregateLate: false,     // whether to further disaggregate Late data 
         ownership: OWNWERSHIP.ALL,
         disaggregatedDataColumn: [COLUMNS.TIMELY, COLUMNS.LATE],    // columns to use as data when non-grouping column is disaggregated
+        timelyReferenceDays: 15,        // number of days to take as timely reports
 
         // setter functions
         setContext: (state) => this.setState(state),
@@ -50,6 +51,7 @@ class App extends Component {
         setDisaggregateLate: (value) => this.setContextOf('disaggregateLate', value),
         setOwnership: (ownership) => { this.setState({ ownership }) },
         setDisaggregatedDataColumn: (value) => this.setContextOf('disaggregatedDataColumn', value),
+        setTimelyReferenceDays: value => this.setState({timelyReferenceDays: value}),
     }
 
     render() {

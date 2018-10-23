@@ -3,6 +3,8 @@ import {
     Card, CardBody,
 } from 'reactstrap';
 
+
+
 import { COLUMNS, CHARTS } from '../../constants/Constants';
 import classnames from 'classnames';
 import SummaryChart from './summarychart/SummaryChart';
@@ -142,7 +144,7 @@ class SummaryDonut extends PureComponent {
                                         <option value={[COLUMNS.TIMELY, COLUMNS.LATE_BY_15]}>Timely + Late (max:15 days)</option>
                                         <option value={[COLUMNS.TIMELY, COLUMNS.LATE_BY_15, COLUMNS.LATE_BY_30]}>Timely + Late (max:30 days)</option>
                                     </select>
-                                </label>   
+                                </label>                                   
                             </div>
                         </div>
                         <hr/>

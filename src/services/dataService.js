@@ -16,20 +16,22 @@ class DataService {
         this.cacheValues = [];
     }
 
-    getDataNepali(startDate, endDate, ouUid, sqlViewId) {
-        return this.getData(sqlViewId, {
-            startDate: nepaliToEnglish(startDate),
-            endDate: nepaliToEnglish(endDate),
-            ouUid
-        })
-    }
-
-    getDataNepaliFilterableOwnership(startDate, endDate, ouUid, ownership, sqlViewId) {
+    getDataNepali(startDate, endDate, ouUid, sqlViewId, timelyReferenceDays) {
         return this.getData(sqlViewId, {
             startDate: nepaliToEnglish(startDate),
             endDate: nepaliToEnglish(endDate),
             ouUid,
-            orgUnitGroupId: ownership
+            timelyReferenceDays
+        })
+    }
+
+    getDataNepaliFilterableOwnership(startDate, endDate, ouUid, ownership, sqlViewId, timelyReferenceDays) {
+        return this.getData(sqlViewId, {
+            startDate: nepaliToEnglish(startDate),
+            endDate: nepaliToEnglish(endDate),
+            ouUid,
+            orgUnitGroupId: ownership,
+            timelyReferenceDays
         })
     }
 
@@ -58,19 +60,19 @@ class DataService {
 
     }
 
-    getPrimaryData(startDate, endDate, ouUid, ownership) {
+    getPrimaryData(startDate, endDate, ouUid, ownership, timelyReferenceDays=15) {
         if (ownership === OWNWERSHIP.ALL) {
-            return this.getDataNepali(startDate, endDate, ouUid, SQLVIEW.AGGREGATED_ANY_OWNERSHIP);
+            return this.getDataNepali(startDate, endDate, ouUid, SQLVIEW.AGGREGATED_ANY_OWNERSHIP, timelyReferenceDays);
         }
         else {
             return this.getDataNepaliFilterableOwnership(
                 startDate, endDate, ouUid, ownership, 
-                SQLVIEW.AGGREGATED_FILTERABLE_OWNERSHIP);
+                SQLVIEW.AGGREGATED_FILTERABLE_OWNERSHIP, timelyReferenceDays);
         }
     }
 
-    getSecondaryData(startDate, endDate, ouUid) {
-        return this.getDataNepali(startDate, endDate, ouUid, SQLVIEW.ALL_HF_DATA);
+    getSecondaryData(startDate, endDate, ouUid, timelyReferenceDays=15) {
+        return this.getDataNepali(startDate, endDate, ouUid, SQLVIEW.ALL_HF_DATA, timelyReferenceDays);
     }
 
     saveFavorite(name, configuration) {
