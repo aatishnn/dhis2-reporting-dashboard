@@ -33,7 +33,10 @@ class Dashboard extends Component {
   loadData() {
     let context = this.props.context;
     this.setState({loading:true})
-    DataService.getPrimaryData(context.startDate, context.endDate, context.ouUid, context.ownership, context.timelyReferenceDays)
+    DataService.getPrimaryData(
+      context.startDate, context.endDate, context.ouUid, context.ownership, context.timelyReferenceDays,
+      context.cutOffDate
+    )
     .then((data) => {
       this.setState({
         headers: data['headers'],
@@ -43,7 +46,7 @@ class Dashboard extends Component {
     })
     .catch((error) => {console.log(error); this.setState({loading: false})})
 
-    DataService.getSecondaryData(context.startDate, context.endDate, context.ouUid, context.timelyReferenceDays)
+    DataService.getSecondaryData(context.startDate, context.endDate, context.ouUid, context.timelyReferenceDays, context.cutOffDate)
     .then((data) => {
       this.setState({
         secondaryHeaders: data['headers'],
@@ -62,6 +65,7 @@ class Dashboard extends Component {
     if(prevContext.ouUid !== context.ouUid 
       || prevContext.startDate !== context.startDate 
       || prevContext.endDate !== context.endDate
+      || prevContext.cutOffDate !== context.cutOffDate
       || prevContext.ownership !== context.ownership
       || prevContext.timelyReferenceDays !== context.timelyReferenceDays ) {
       this.loadData()

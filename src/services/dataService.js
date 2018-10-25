@@ -16,22 +16,24 @@ class DataService {
         this.cacheValues = [];
     }
 
-    getDataNepali(startDate, endDate, ouUid, sqlViewId, timelyReferenceDays) {
+    getDataNepali(startDate, endDate, ouUid, sqlViewId, timelyReferenceDays, cutOffDate) {
         return this.getData(sqlViewId, {
             startDate: nepaliToEnglish(startDate),
             endDate: nepaliToEnglish(endDate),
             ouUid,
-            timelyReferenceDays
+            timelyReferenceDays,
+            cutOffDate: nepaliToEnglish(cutOffDate)
         })
     }
 
-    getDataNepaliFilterableOwnership(startDate, endDate, ouUid, ownership, sqlViewId, timelyReferenceDays) {
+    getDataNepaliFilterableOwnership(startDate, endDate, ouUid, ownership, sqlViewId, timelyReferenceDays, cutOffDate) {
         return this.getData(sqlViewId, {
             startDate: nepaliToEnglish(startDate),
             endDate: nepaliToEnglish(endDate),
             ouUid,
             orgUnitGroupId: ownership,
-            timelyReferenceDays
+            timelyReferenceDays,
+            cutOffDate: nepaliToEnglish(cutOffDate)
         })
     }
 
@@ -60,19 +62,19 @@ class DataService {
 
     }
 
-    getPrimaryData(startDate, endDate, ouUid, ownership, timelyReferenceDays=15) {
+    getPrimaryData(startDate, endDate, ouUid, ownership, timelyReferenceDays=15, cutOffDate) {
         if (ownership === OWNWERSHIP.ALL) {
-            return this.getDataNepali(startDate, endDate, ouUid, SQLVIEW.AGGREGATED_ANY_OWNERSHIP, timelyReferenceDays);
+            return this.getDataNepali(startDate, endDate, ouUid, SQLVIEW.AGGREGATED_ANY_OWNERSHIP, timelyReferenceDays, cutOffDate);
         }
         else {
             return this.getDataNepaliFilterableOwnership(
                 startDate, endDate, ouUid, ownership, 
-                SQLVIEW.AGGREGATED_FILTERABLE_OWNERSHIP, timelyReferenceDays);
+                SQLVIEW.AGGREGATED_FILTERABLE_OWNERSHIP, timelyReferenceDays, cutOffDate );
         }
     }
 
-    getSecondaryData(startDate, endDate, ouUid, timelyReferenceDays=15) {
-        return this.getDataNepali(startDate, endDate, ouUid, SQLVIEW.ALL_HF_DATA, timelyReferenceDays);
+    getSecondaryData(startDate, endDate, ouUid, timelyReferenceDays=15, cutOffDate) {
+        return this.getDataNepali(startDate, endDate, ouUid, SQLVIEW.ALL_HF_DATA, timelyReferenceDays, cutOffDate);
     }
 
     saveFavorite(name, configuration) {

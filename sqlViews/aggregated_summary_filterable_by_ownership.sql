@@ -52,6 +52,9 @@ LEFT JOIN completedatasetregistration cdr ON
 	cdr.periodid=pe.periodid 
 	AND 
 	(cdr.datasetid = 4628 OR cdr.datasetid = 4657)
+	AND
+	cdr.date <= '${cutOffDate}'
+	
 LEFT JOIN users ON users.username = cdr.storedby
 LEFT JOIN usermembership ON usermembership.userinfoid = users.userid AND  usermembership.organisationunitid = ou.organisationunitid 
 -- orgunitgroupid for "PUBLIC" is 49380
@@ -66,6 +69,6 @@ WHERE
 	AND
 	ou.openingdate <= '${startDate}'
 	AND
-	(pe.startdate >= '${startDate}' AND pe.enddate <= '${endDate}')  -- Chaitra 2073
+	(pe.startdate >= '${startDate}' AND pe.enddate <= '${endDate}')
 GROUP BY children.name, month
 ORDER BY month DESC

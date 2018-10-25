@@ -7,7 +7,8 @@ import Nav from './components/nav/Nav';
 import SideNav from './components/sidenav/SideNav';
 import Dashboard from './components/dashboard/Dashboard';
 import { COLUMNS, CHARTS, OWNWERSHIP } from './constants/Constants';
-import { defaultStaticRanges } from './utils/DateUtils';
+import { defaultStaticRanges, toDateString } from './utils/DateUtils';
+import { todayNepali, formatNepaliDate } from './utils/NepaliDateUtils';
 
 
 const DashboardContext = React.createContext({})
@@ -36,7 +37,8 @@ class App extends Component {
         disaggregateLate: false,     // whether to further disaggregate Late data 
         ownership: OWNWERSHIP.ALL,
         disaggregatedDataColumn: [COLUMNS.TIMELY, COLUMNS.LATE],    // columns to use as data when non-grouping column is disaggregated
-        timelyReferenceDays: 15,        // number of days to take as timely reports
+        timelyReferenceDays: 15,                // number of days to take as timely reports
+        cutOffDate: formatNepaliDate(todayNepali()),    // days after which data set registrations are considered unreported. defaults to today
 
         // setter functions
         setContext: (state) => this.setState(state),
@@ -53,6 +55,8 @@ class App extends Component {
         setOwnership: (ownership) => { this.setState({ ownership }) },
         setDisaggregatedDataColumn: (value) => this.setContextOf('disaggregatedDataColumn', value),
         setTimelyReferenceDays: value => this.setState({timelyReferenceDays: value}),
+        setCutOffDate: value => this.setState({ setCutOffDate: value }),
+
     }
 
     render() {

@@ -41,6 +41,8 @@ FROM organisationunit ou
 		cdr.periodid=pe.periodid
 		AND
 		(cdr.datasetid = 4628 OR cdr.datasetid = 4657)
+		AND
+		cdr.date <= '${cutOffDate}'
 	LEFT JOIN users ON users.username = cdr.storedby
 	LEFT JOIN usermembership ON usermembership.userinfoid = users.userid AND usermembership.organisationunitid = ou.organisationunitid
 	LEFT JOIN organisationunit storing_ou ON storing_ou.organisationunitid = usermembership.organisationunitid
