@@ -1,16 +1,19 @@
+import {format} from 'date-fns';
+
 import {
     startOfMonth,
     endOfMonth,
     addMonths,
     startOfYear,
     endOfYear,
+    startOfFiscalYear,
+    endOfFiscalYear,
     addYears,
     isSameDay,
-    format
-} from 'date-fns';
+    todayNepali,
+    formatNepaliDate
+} from './NepaliDateUtils';
 
-// requires jquery-calendars plugin
-const $ = window.$;
 const jQuery = window.jQuery;
 
 const nepaliCalendar = jQuery.calendars.instance('nepali', 'ne')
@@ -24,22 +27,31 @@ export const toDateString = function(date) {
 // last 3 months
 // remove this month
 
+console.log(todayNepali())
+console.log(addMonths(todayNepali(), -12))
+
+// console.log(startOfMonth(addMonths(todayNepali(), -12)))
+// console.log(startOfMonth(addMonths(todayNepali(), -1)))
+
 const defineds = {
-    startOfMonth: startOfMonth(new Date()),
-    endOfMonth: endOfMonth(new Date()),
-    startOfYear: startOfYear(new Date()),
-    endOfYear: endOfYear(new Date()),
+    startOfMonth: startOfMonth(todayNepali()),
+    endOfMonth: endOfMonth(todayNepali()),
+    startOfYear: startOfYear(todayNepali()),
+    endOfYear: endOfYear(todayNepali()),
 
-    startOfLastThreeMonths: startOfMonth(addMonths(new Date(), -3)),
-    endOfLastThreeMonths: endOfMonth(addMonths(new Date(), -1)),
+    startOfLastThreeMonths: startOfMonth(addMonths(todayNepali(), -3)),
+    endOfLastThreeMonths: endOfMonth(addMonths(todayNepali(), -1)),
 
-    startOfLastSixMonths: startOfMonth(addMonths(new Date(), -6)),
-    endOfLastSixMonths: endOfMonth(addMonths(new Date(), -1)),
-    startOfLastTwelveMonths: startOfMonth(addMonths(new Date(), -12)),
-    endOfLastTwelveMonths: endOfMonth(addMonths(new Date(), -1)),
+    startOfLastSixMonths: startOfMonth(addMonths(todayNepali(), -6)),
+    endOfLastSixMonths: endOfMonth(addMonths(todayNepali(), -1)),
+    startOfLastTwelveMonths: startOfMonth(addMonths(todayNepali(), -12)),
+    endOfLastTwelveMonths: endOfMonth(addMonths(todayNepali(), -1)),
 
-    startOfLastYear: startOfYear(addYears(new Date(), -1)),
-    endOfLastYear: endOfYear(addYears(new Date(), -1)),
+    startOfLastYear: startOfYear(addYears(todayNepali(), -1)),
+    endOfLastYear: endOfYear(addYears(todayNepali(), -1)),
+
+    startOfLastFiscalYear: startOfFiscalYear(addYears(todayNepali(), -1)),
+    endOfLastFiscalYear: endOfFiscalYear(addYears(todayNepali(), -1)),
 
 };
 
@@ -60,15 +72,22 @@ export const defaultStaticRanges = [
             endDate: defineds.endOfLastTwelveMonths,
         }),
     },
+    // {
+    //     label: 'Last Year',
+    //     range: () => ({
+    //         startDate: defineds.startOfLastYear,
+    //         endDate: defineds.endOfLastYear,
+    //     }),
+    // },
     {
-        label: 'Last Year',
+        label: 'Last Fiscal Year',
         range: () => ({
-            startDate: defineds.startOfLastYear,
-            endDate: defineds.endOfLastYear,
+            startDate: defineds.startOfLastFiscalYear,
+            endDate: defineds.endOfLastFiscalYear,
         }),
     },
 ].map((range) => {return {...range, rangeDate: () => { var r = range.range(); return {
-    startDate: englishToNepali(r.startDate), endDate: englishToNepali(r.endDate)}}}});
+    startDate: formatNepaliDate(r.startDate), endDate: formatNepaliDate(r.endDate)}}}});
 
 
 export const compareDates = function(date1, date2) {

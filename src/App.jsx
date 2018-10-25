@@ -7,6 +7,7 @@ import Nav from './components/nav/Nav';
 import SideNav from './components/sidenav/SideNav';
 import Dashboard from './components/dashboard/Dashboard';
 import { COLUMNS, CHARTS, OWNWERSHIP } from './constants/Constants';
+import { defaultStaticRanges } from './utils/DateUtils';
 
 
 const DashboardContext = React.createContext({})
@@ -26,8 +27,8 @@ class App extends Component {
     state = {
         // shared context for dashboard childrens
         ouUid: null,
-        startDate: '03/03/2074',
-        endDate: '03/03/2075',
+        startDate: defaultStaticRanges[1].rangeDate().startDate,
+        endDate: defaultStaticRanges[1].rangeDate().endDate,
         calculatePercentage: true,
         groupBy: COLUMNS.MONTH,
         chartType: CHARTS.COLUMN,

@@ -9,6 +9,7 @@ import Tabs from './tabs/Tabs';
 import Reports from '../reporting/Reports';
 import DataService from '../../services/dataService';
 import { withDashboard } from '../../App';
+import NepaliDateUtils from '../../utils/NepaliDateUtils';
 
 
 const loaderParams = {
@@ -85,8 +86,6 @@ class Dashboard extends Component {
 
           }
         </div>
-
-
       </main>
     )
   }
