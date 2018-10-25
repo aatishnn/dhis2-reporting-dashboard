@@ -7,6 +7,7 @@ import { withDashboard } from '../../../App';
 import { OWNWERSHIP } from '../../../constants/Constants';
 import NepaliDatePicker from '../../nepalidatepicker/NepaliDatePicker';
 import Options from '../Options';
+import { en_NEPALI_MONTHS } from '../../../utils/BikramSambatConverter';
 
 
 class DashboardNav extends Component {
@@ -51,6 +52,11 @@ class DashboardNav extends Component {
     }));
   }
 
+  formatDate = (dateStr) => {
+    var dateArr = dateStr.split("/");
+    return en_NEPALI_MONTHS.monthsName[Number(dateArr[1]) - 1] + " " + dateArr[0] + ", " + dateArr[2];
+  }
+
 
   render() {
     return (
@@ -65,7 +71,7 @@ class DashboardNav extends Component {
             <option value={OWNWERSHIP.ALL}>Any</option>
           </select>
         </label>
-        <h1 className="h4">{this.props.context.startDate} - {this.props.context.endDate}</h1>
+        <h1 className="h4">{this.formatDate(this.props.context.startDate)} - {this.formatDate(this.props.context.endDate)}</h1>
 
         <div className="btn-toolbar mb-2 mb-md-0">
           <div className="btn-group mr-2">
@@ -100,7 +106,7 @@ class DashboardNav extends Component {
             </DropdownMenu>
           </Dropdown>
           <button className="btn btn-sm btn-outline-info ml-3" onClick={this.toggleOptionsModal}>
-            More Options
+            ⚙ Options
           </button>
           <Options isOpen={this.state.isOptionsModalOpen} toggle={this.toggleOptionsModal} />
         </div>
