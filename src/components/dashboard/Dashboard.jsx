@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
+import Loader from 'react-loader-spinner'
+import Joyride from 'react-joyride';
+
+
 import ReportTable from '../ReportTable/ReportTable';
 import SummaryDonut from '../charts/SummaryContainer';
-import Loader from 'react-loader-spinner'
-
-
 import DashboardNav from './dashboard-nav/DashboardNav';
 import Tabs from './tabs/Tabs';
 import Reports from '../reporting/Reports';
 import DataService from '../../services/dataService';
 import { withDashboard } from '../../App';
-import NepaliDateUtils from '../../utils/NepaliDateUtils';
 
 
 const loaderParams = {
@@ -90,6 +90,23 @@ class Dashboard extends Component {
 
           }
         </div>
+
+        <Joyride
+          steps={
+            [{
+              target: '.custom-select',
+              content: 'Filter by ownership here',
+              placement: 'auto',
+            },
+            {
+              target: '.btn-toolbar',
+              content: 'Either select relative period or use a custom date range',
+              placement: 'auto',
+            }
+          
+          ]}
+          run={true}
+        />
       </main>
     )
   }
