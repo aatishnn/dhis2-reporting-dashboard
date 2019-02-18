@@ -69,6 +69,7 @@ class DashboardNav extends Component {
             <option value={OWNERSHIP.PUBLIC}>Public</option>
             <option value={OWNERSHIP.PRIVATE}>Non-Public</option>
             <option value={OWNERSHIP.EREPORTING_SELECTED}>E-reporting facilities (Selected)</option>
+            <option value={OWNERSHIP.EREPORTING_SELECTED_ALL}>E-reporting facilities (All)</option>
             <option value={OWNERSHIP.ALL}>Any</option>
           </select>
         </label>
