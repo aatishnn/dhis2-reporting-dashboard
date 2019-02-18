@@ -7,7 +7,7 @@ import { Container } from 'reactstrap';
 import Nav from './components/nav/Nav';
 import SideNav from './components/sidenav/SideNav';
 import Dashboard from './components/dashboard/Dashboard';
-import { COLUMNS, CHARTS, OWNWERSHIP } from './constants/Constants';
+import { COLUMNS, CHARTS, OWNERSHIP } from './constants/Constants';
 import { defaultStaticRanges, toDateString } from './utils/DateUtils';
 import { todayNepali, formatNepaliDate } from './utils/NepaliDateUtils';
 
@@ -36,7 +36,7 @@ class App extends Component {
         chartType: CHARTS.COLUMN,
         aggregate: true,            // aggregate non-grouping column
         disaggregateLate: false,     // whether to further disaggregate Late data 
-        ownership: OWNWERSHIP.ALL,
+        ownership: OWNERSHIP.ALL,
         disaggregatedDataColumn: [COLUMNS.TIMELY, COLUMNS.LATE],    // columns to use as data when non-grouping column is disaggregated
         timelyReferenceDays: 15,                // number of days to take as timely reports
         cutOffDate: formatNepaliDate(todayNepali()),    // days after which data set registrations are considered unreported. defaults to today

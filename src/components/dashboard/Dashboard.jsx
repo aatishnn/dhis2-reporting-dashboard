@@ -46,7 +46,7 @@ class Dashboard extends Component {
     })
     .catch((error) => {console.log(error); this.setState({loading: false})})
 
-    DataService.getSecondaryData(context.startDate, context.endDate, context.ouUid, context.timelyReferenceDays, context.cutOffDate)
+    DataService.getSecondaryData(context.startDate, context.endDate, context.ouUid, context.ownership, context.timelyReferenceDays, context.cutOffDate)
     .then((data) => {
       this.setState({
         secondaryHeaders: data['headers'],

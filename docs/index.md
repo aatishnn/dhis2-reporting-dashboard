@@ -29,6 +29,10 @@ Generates aggregated counts of various reporting status
 
     - Filename: all_health_facilities_with_unreported.sql
 
+#### Raw data of submission status for each month for all facilities selected - filterable by Ownership
+
+    - Filename: all_health_facilities_with_unreported_filterable_ownership.sql
+
 Create these SQL Views in DHIS2 with the following parameters:
 
 ![DHIS2 SQL View Configuration](images/dhis2-sqlview.png)
@@ -44,7 +48,8 @@ Now, copy `.env` to `.env.local` and set IDs in the file as:
     REACT_APP_SQL_VIEW_AGGREGATED_ANY_OWNERSHIP="yyyy"
     REACT_APP_SQL_VIEW_AGGREGATED_FILTERABLE_OWNERSHIP="yyyy"
     REACT_APP_SQL_VIEW_ALL_HF_DATA="yyyy"
-
+    REACT_APP_SQL_VIEW_ALL_HF_DATA_FILTERABLE_OWNERSHIP="yyyy"
+    REACT_APP_OWNERSHIP_EREPORTING_SELECTED=""
 
 ### Dependencies
 Aside from the regular `yarn install`, this app requires a running DHIS2 instance, however it needn't be installed as a DHIS2 App during development. Once dependencies are installed, you can do:

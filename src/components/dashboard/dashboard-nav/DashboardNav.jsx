@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 import { defaultStaticRanges } from '../../../utils/DateUtils';
 import { withDashboard } from '../../../App';
-import { OWNWERSHIP } from '../../../constants/Constants';
+import { OWNERSHIP } from '../../../constants/Constants';
 import NepaliDatePicker from '../../nepalidatepicker/NepaliDatePicker';
 import Options from '../Options';
 import { en_NEPALI_MONTHS } from '../../../utils/BikramSambatConverter';
@@ -61,14 +61,15 @@ class DashboardNav extends Component {
   render() {
     return (
       <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <label>Ownership:
+        <label>OU Group:
           <select class="custom-select"
             value={this.props.context.ownership}
             onChange={event => this.props.context.setOwnership(event.target.value)}
           >
-            <option value={OWNWERSHIP.PUBLIC}>Public</option>
-            <option value={OWNWERSHIP.PRIVATE}>Non-Public</option>
-            <option value={OWNWERSHIP.ALL}>Any</option>
+            <option value={OWNERSHIP.PUBLIC}>Public</option>
+            <option value={OWNERSHIP.PRIVATE}>Non-Public</option>
+            <option value={OWNERSHIP.EREPORTING_SELECTED}>E-reporting facilities (Selected)</option>
+            <option value={OWNERSHIP.ALL}>Any</option>
           </select>
         </label>
         <h1 className="h4">{this.formatDate(this.props.context.startDate)} - {this.formatDate(this.props.context.endDate)}</h1>
