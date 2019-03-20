@@ -47,7 +47,7 @@ export function addMonths(nepaliDate, months) {
         desiredMonth += 12;
         resultingYear -= 1;
     }
-    desiredMonth = desiredMonth < 1 ? 12 + desiredMonth : desiredMonth % 12;
+    //desiredMonth = desiredMonth < 1 ? 12 + desiredMonth : desiredMonth % 12;
     let newDate = Math.min(nepaliDate.date, getDaysInMonth(resultingYear, desiredMonth));
     return {year: resultingYear, month: desiredMonth, date: newDate }
 }
