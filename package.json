@@ -10,7 +10,7 @@
     "highcharts": "^6.1.2",
     "highcharts-exporting": "^0.1.7",
     "highcharts-react-official": "^1.4.0",
-    "jquery": "^3.3.1",
+    "jquery": "^3.4.0",
     "lodash": "^4.17.10",
     "rc-slider": "^8.6.3",
     "rc-tooltip": "^3.7.3",
