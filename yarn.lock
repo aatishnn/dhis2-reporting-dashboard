@@ -2544,13 +2544,10 @@ decode-uri-component@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
 
-deep-diff@^0.3.8:
-  version "0.3.8"
-  resolved "https://registry.yarnpkg.com/deep-diff/-/deep-diff-0.3.8.tgz#c01de63efb0eec9798801d40c7e0dae25b582c84"
-
-deep-diff@^1.0.1:
+deep-diff@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/deep-diff/-/deep-diff-1.0.2.tgz#afd3d1f749115be965e89c63edc7abb1506b9c26"
+  integrity sha512-aWS3UIVH+NPGCD1kki+DCU9Dua032iSsO43LqQpcs4R3+dVv7tX0qBGjiVHJHjplsoUM2XRO/KB92glqc68awg==
 
 deep-equal@^1.0.1:
   version "1.0.1"
@@ -2564,9 +2561,10 @@ deep-is@~0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
 
-deepmerge@^2.1.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-2.2.1.tgz#5d3ff22a01c00f645405a2fbc17d0778a1801170"
+deepmerge@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-4.0.0.tgz#3e3110ca29205f120d7cb064960a39c3d2087c09"
+  integrity sha512-YZ1rOP5+kHor4hMAH+HRQnBQHg+wvS1un1hAOuIcxcBy0hzcUf6Jg2a1w65kpoOUnurOfZbERwjI1TfZxNjcww==
 
 default-gateway@^2.6.0:
   version "2.7.2"
@@ -2747,10 +2745,6 @@ dom-serializer@0:
   dependencies:
     domelementtype "~1.1.1"
     entities "~1.1.1"
-
-dom-walk@^0.1.0:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/dom-walk/-/dom-walk-0.1.1.tgz#672226dc74c8f799ad35307df936aba11acd6018"
 
 domain-browser@^1.1.1:
   version "1.2.0"
@@ -3167,6 +3161,7 @@ execa@^0.7.0:
 exenv@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/exenv/-/exenv-1.2.2.tgz#2ae78e85d9894158670b03d47bec1f03bd91bb9d"
+  integrity sha1-KueOhdmJQVhnCwPUe+wfA72Ru50=
 
 exit@^0.1.2:
   version "0.1.2"
@@ -3675,13 +3670,6 @@ global-prefix@^1.0.1:
     ini "^1.3.4"
     is-windows "^1.0.1"
     which "^1.2.14"
-
-global@~4.3.0:
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/global/-/global-4.3.2.tgz#e76989268a6c74c38908b1305b10fc0e394e9d0f"
-  dependencies:
-    min-document "^2.19.0"
-    process "~0.5.1"
 
 globals@^11.1.0, globals@^11.7.0:
   version "11.8.0"
@@ -4365,9 +4353,10 @@ is-glob@^4.0.0:
   dependencies:
     is-extglob "^2.1.1"
 
-is-lite@^0.2.0:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/is-lite/-/is-lite-0.2.1.tgz#ff74389d8f9fcded79ab20f15113cee558b55d84"
+is-lite@^0.4.0, is-lite@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/is-lite/-/is-lite-0.4.1.tgz#b8e8926a51607ba5346564edde10efc3a64cdb0f"
+  integrity sha512-diPJE2qrrPa+C+Yqj15XngeLawX4QukXI2J5f3jJ26ap2sv20WyecdHM72b/lHGuJAHhx2Qn7Nx5IsZDDS0crg==
 
 is-number@^2.1.0:
   version "2.1.0"
@@ -5467,12 +5456,6 @@ mimic-fn@^1.0.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/mimic-fn/-/mimic-fn-1.2.0.tgz#820c86a39334640e99516928bd03fca88057d022"
 
-min-document@^2.19.0:
-  version "2.19.0"
-  resolved "https://registry.yarnpkg.com/min-document/-/min-document-2.19.0.tgz#7bd282e3f5842ed295bb748cdd9f1ffa2c824685"
-  dependencies:
-    dom-walk "^0.1.0"
-
 mini-css-extract-plugin@0.4.3:
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-0.4.3.tgz#98d60fcc5d228c3e36a9bd15a1d6816d6580beb8"
@@ -5644,9 +5627,15 @@ neo-async@^2.5.0:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.5.2.tgz#489105ce7bc54e709d736b195f82135048c50fcc"
 
-nested-property@0.0.7, nested-property@^0.0.7:
+nested-property@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/nested-property/-/nested-property-0.0.7.tgz#ff222f233ca8793c6828b4117091bea597130f4f"
+  integrity sha1-/yIvIzyoeTxoKLQRcJG+pZcTD08=
+
+nested-property@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/nested-property/-/nested-property-1.0.1.tgz#2001105b5c69413411b876bba9b86f4316af613f"
+  integrity sha512-BnBBoo/8bBNRdAnJc7+m79oWk7dXwW1+vCesaEQhfDGVwXGLMvmI4NwYgLTW94R/x+R2s/yr2g/hB/4w/YSAvA==
 
 nice-try@^1.0.4:
   version "1.0.5"
@@ -6200,9 +6189,14 @@ pnp-webpack-plugin@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/pnp-webpack-plugin/-/pnp-webpack-plugin-1.1.0.tgz#947a96d1db94bb5a1fc014d83b581e428699ac8c"
 
-popper.js@^1.14.1, popper.js@^1.14.3:
+popper.js@^1.14.1:
   version "1.14.4"
   resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.14.4.tgz#8eec1d8ff02a5a3a152dd43414a15c7b79fd69b6"
+
+popper.js@^1.15.0:
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.15.0.tgz#5560b99bbad7647e9faa475c6b8056621f5a4ff2"
+  integrity sha512-w010cY1oCUmI+9KwwlWki+r5jxKfTFDVoadl7MSrIujHU5MJ5OR6HTDj6Xo8aoR/QsA56x8jKjA59qGH4ELtrA==
 
 portfinder@^1.0.9:
   version "1.0.17"
@@ -6804,10 +6798,6 @@ process@^0.11.10:
   version "0.11.10"
   resolved "https://registry.yarnpkg.com/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
 
-process@~0.5.1:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/process/-/process-0.5.2.tgz#1638d8a8e34c2f440a91db95ab9aeb677fc185cf"
-
 progress@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.0.tgz#8a1be366bf8fc23db2bd23f10c6fe920b4389d1f"
@@ -6935,12 +6925,6 @@ raf@3.4.0, raf@^3.4.0:
   resolved "https://registry.yarnpkg.com/raf/-/raf-3.4.0.tgz#a28876881b4bc2ca9117d4138163ddb80f781575"
   dependencies:
     performance-now "^2.1.0"
-
-rafl@~1.2.1:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/rafl/-/rafl-1.2.2.tgz#fe930f758211020d47e38815f5196a8be4150740"
-  dependencies:
-    global "~4.3.0"
 
 randomatic@^3.0.0:
   version "3.1.0"
@@ -7146,31 +7130,39 @@ react-error-overlay@^5.0.4:
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.0.4.tgz#39cf184d770f98b65a2ee59a779d03b8d092b69e"
 
-react-floater@^0.5.5:
-  version "0.5.5"
-  resolved "https://registry.yarnpkg.com/react-floater/-/react-floater-0.5.5.tgz#52df8403edc1cbf1a9797759f49d4e4066e1d1c6"
+react-floater@^0.6.5:
+  version "0.6.5"
+  resolved "https://registry.yarnpkg.com/react-floater/-/react-floater-0.6.5.tgz#6f81a6f2f20a86498c49065fc8f527befa3ab0d5"
+  integrity sha512-UKXfqwJwYVIIx8m8WDCSJvZ0DWNoN6dELL2j9234fJTXjQVgyeeRpGQI8yuNjaxBwxR5we4+r8+TNLkqshmlkg==
   dependencies:
-    deepmerge "^2.1.1"
+    deepmerge "^4.0.0"
     exenv "^1.2.2"
-    is-lite "^0.2.0"
-    popper.js "^1.14.3"
+    is-lite "^0.4.0"
+    popper.js "^1.15.0"
     react-proptype-conditional-require "^1.0.4"
+    tree-changes "^0.4.0"
+
+react-is@^16.8.6:
+  version "16.8.6"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
+  integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
 
 react-joyride@^2.0.0-15:
-  version "2.0.0-15"
-  resolved "https://registry.yarnpkg.com/react-joyride/-/react-joyride-2.0.0-15.tgz#58f9274b8de739b78648ae260826319ea066ae44"
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-joyride/-/react-joyride-2.1.1.tgz#f986d3e1856d4ad4c96dd3eb0ad76a867447ad32"
+  integrity sha512-efdI5YbrhEvAFYVzeIN4OKdL3zvULedhNtfuYNUFhL7dSS1tP1I53oxnGAW2BRaKJooUR2Clh01Q16Ilr3JCWA==
   dependencies:
-    deep-diff "^1.0.1"
-    deepmerge "^2.1.1"
+    deep-diff "^1.0.2"
+    deepmerge "^4.0.0"
     exenv "^1.2.2"
-    is-lite "^0.2.0"
-    nested-property "^0.0.7"
-    react-floater "^0.5.5"
-    react-proptype-conditional-require "^1.0.4"
-    scroll "^2.0.3"
+    is-lite "^0.4.1"
+    nested-property "^1.0.1"
+    react-floater "^0.6.5"
+    react-is "^16.8.6"
+    scroll "^3.0.1"
     scroll-doc "^0.2.1"
     scrollparent "^2.0.1"
-    tree-changes "^0.3.2"
+    tree-changes "^0.4.0"
 
 react-lifecycles-compat@^3.0.4:
   version "3.0.4"
@@ -7192,6 +7184,7 @@ react-popper@^0.10.4:
 react-proptype-conditional-require@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/react-proptype-conditional-require/-/react-proptype-conditional-require-1.0.4.tgz#69c2d5741e6df5e08f230f36bbc2944ee1222555"
+  integrity sha1-acLVdB5t9eCPIw82u8KUTuEiJVU=
 
 react-scripts@2.0.3:
   version "2.0.3"
@@ -7714,16 +7707,17 @@ schema-utils@^1.0.0:
 scroll-doc@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/scroll-doc/-/scroll-doc-0.2.1.tgz#168f9e9ac598743dd682c992839b44a38ce4dd91"
+  integrity sha512-ZLueZaKMkdL1/SL07Fpw/P/MFYit76GaaKQYnjLSx2K6dOUmkYP1TEOyyfKZohvDyoKMwue0l9MbgPesREjqCA==
 
-scroll@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/scroll/-/scroll-2.0.3.tgz#0951b785544205fd17753bc3d294738ba16fc2ab"
-  dependencies:
-    rafl "~1.2.1"
+scroll@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/scroll/-/scroll-3.0.1.tgz#d5afb59fb3592ee3df31c89743e78b39e4cd8a26"
+  integrity sha512-pz7y517OVls1maEzlirKO5nPYle9AXsFzTMNJrRGmT951mzpIBy7sNHOg5o/0MQd/NqliCiWnAi0kZneMPFLcg==
 
 scrollparent@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/scrollparent/-/scrollparent-2.0.1.tgz#715d5b9cc57760fb22bdccc3befb5bfe06b1a317"
+  integrity sha1-cV1bnMV3YPsivczDvvtb/gaxoxc=
 
 select-hose@^2.0.0:
   version "2.0.0"
@@ -8407,11 +8401,12 @@ tr46@^1.0.1:
   dependencies:
     punycode "^2.1.0"
 
-tree-changes@^0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/tree-changes/-/tree-changes-0.3.2.tgz#ad7d3b499155bd6176f2c9c6a472d8155df0a9ce"
+tree-changes@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/tree-changes/-/tree-changes-0.4.0.tgz#128b5a50862795f5c7818a3583dc4c3fbd54d569"
+  integrity sha512-ayVwCHFCCm2LtaEqf2cbgt9Em8QTnn6nIMFZErAE4XwdPawRmSSE+AUUrt6MZmwxPqELSH3ZAcOTOkpIvCxhew==
   dependencies:
-    deep-diff "^0.3.8"
+    deep-diff "^1.0.2"
     nested-property "0.0.7"
 
 trim-right@^1.0.1:

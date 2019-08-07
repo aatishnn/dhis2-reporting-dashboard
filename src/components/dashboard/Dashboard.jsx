@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Loader from "react-loader-spinner";
-import Joyride from "react-joyride";
+import Joyride, { STATUS } from "react-joyride";
 
 import ReportTable from "../ReportTable/ReportTable";
 import SummaryDonut from "../charts/SummaryContainer";
@@ -23,7 +23,8 @@ class Dashboard extends Component {
     headers: [],
     rows: [],
     secondaryHeaders: [],
-    secondaryRows: []
+    secondaryRows: [],
+    tourDone: localStorage.getItem("tourDone") === "true"
   };
 
   loadData() {
@@ -147,7 +148,12 @@ class Dashboard extends Component {
               placement: "auto"
             }
           ]}
-          run={true}
+          run={!this.state.tourDone}
+          callback={({ status }) => {
+            if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status)) {
+              localStorage.setItem("tourDone", "true");
+            }
+          }}
         />
       </main>
     );
