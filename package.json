@@ -11,7 +11,7 @@
     "highcharts-exporting": "^0.1.7",
     "highcharts-react-official": "^1.4.0",
     "jquery": "^3.3.1",
-    "lodash": "^4.17.13",
+    "lodash": "^4.17.19",
     "rc-slider": "^8.6.3",
     "rc-tooltip": "^3.7.3",
     "rc-tree": "^1.14.4",
